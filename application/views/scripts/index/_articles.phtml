@@ -1,0 +1,17 @@
+<?php $section = $this->section; ?>
+
+<h2><?php echo $section['title']; ?></h2>
+<table class="table table-striped table-bordered">
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Date</th>
+        </tr>
+    </thead>
+    <?php foreach($section['result'] as $value) { ?>
+        <tr>
+            <td><?php echo $value['title']; ?></td>
+            <td><?php echo $value['date']; ?></td>
+        </tr>
+    <?php } ?>
+</table>

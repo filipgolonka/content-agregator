@@ -1,0 +1,30 @@
+<ul class="nav nav-tabs">
+    <?php foreach($this->availableSections as $type => $section) { ?>
+        <li class="<?php echo $this->type == $type ? 'active' : ''; ?>">
+            <a href="<?php echo $this->url(array('type' => $type)); ?>"><?php echo $section; ?></a>
+        </li>
+    <?php } ?>
+</ul>
+
+<?php
+/** @var Fg_Agregator_Response $response */
+$response = $this->response;
+?>
+
+<div class="page-header">
+    <h1><?php echo $response->getTitle(); ?></h1>
+</div>
+
+<?php
+$sections = $response->getSections();
+$sectionsChunks = array_chunk($sections, 2);
+?>
+<?php foreach($sectionsChunks as $sectionsChunk) { ?>
+    <div class="row-fluid">
+        <?php foreach($sectionsChunk as $section) { ?>
+            <div class="col-md-6">
+                <?php echo $this->partial('index/' . $section['partial'], array('section' => $section)); ?>
+            </div>
+        <?php } ?>
+    </div>
+<?php } ?>
